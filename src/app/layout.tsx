@@ -19,10 +19,10 @@ export const metadata: Metadata = {
     "1-on-1 online Quran classes for kids, taught in Urdu by an experienced female Pakistani Qaria (15 saal ka tajurba). Nazra, Tajweed, Duaein aur Islami Adaab | ghar baithe. Pehli class bilkul FREE.",
   keywords: [
     "online Quran classes for kids",
-    "female Quran teacher",
     "Pakistani Quran teacher",
     "Quran classes in Urdu",
     "online Qaria",
+    "online female Quran teacher",
     "1-on-1 Quran classes",
     "Tajweed classes online",
   ],
