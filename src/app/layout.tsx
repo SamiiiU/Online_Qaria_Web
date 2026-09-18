@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Lora } from "next/font/google";
+import MetaPixel from "./components/MetaPixel";
 import "./globals.css";
 
 const body = Inter({
@@ -44,7 +45,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="ur-Latn"
       className={`${body.variable} ${heading.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <MetaPixel />
+      </body>
     </html>
   );
 }

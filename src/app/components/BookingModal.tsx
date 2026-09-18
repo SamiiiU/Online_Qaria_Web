@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { EMAILJS } from "../emailjs";
 import { OPEN_BOOKING_EVENT } from "./BookButton";
+import { trackPixel } from "./MetaPixel";
 
 const inputClass =
   "w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-ink placeholder:text-slate-400 focus:border-gold focus:ring-2 focus:ring-gold/30 focus:outline-none";
@@ -46,6 +47,7 @@ export default function BookingModal() {
         },
         { publicKey: EMAILJS.publicKey },
       );
+      trackPixel("Lead", { content_name: "Free Demo Booking", num_students: data.kids });
       form.reset();
       setStatus("done");
     } catch {
