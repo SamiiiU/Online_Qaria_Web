@@ -106,7 +106,7 @@ export default function Home() {
                 alt="Online Qaria | khatoon Qaria Quran parhate hue"
                 width={500}
                 height={500}
-                priority
+                sizes="(min-width: 768px) 33vw, 240px"
                 className="w-60 sm:w-72 md:w-full md:max-w-md"
               />
             </div>
