@@ -23,3 +23,26 @@ body {
   color: var(--color-ink);
   font-family: var(--font-body), system-ui, sans-serif;
 }
+
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-gold) 65%, white);
+  outline-offset: 3px;
+}
+
+.content-copy {
+  color: var(--color-muted);
+  line-height: 1.75;
+}
+
+.content-copy > * + * {
+  margin-top: 1rem;
+}
+
+.content-copy ul,
+.content-copy ol {
+  padding-left: 1.25rem;
+}
+
+.content-copy ul { list-style: disc; }
+.content-copy ol { list-style: decimal; }
+.content-copy strong { color: var(--color-navy); }

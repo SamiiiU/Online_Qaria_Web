@@ -15,9 +15,13 @@ const heading = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Online Quran Classes for Kids in Urdu | Female Pakistani Qaria | Online Qaria",
+  metadataBase: new URL("https://onlineqaria.com"),
+  title: {
+    default: "Online Quran Classes for Kids | Female Qaria | Online Qaria",
+    template: "%s | Online Qaria",
+  },
   description:
-    "1-on-1 online Quran classes for kids, taught in Urdu by an experienced female Pakistani Qaria (15 saal ka tajurba). Nazra, Tajweed, Duaein aur Islami Adaab | ghar baithe. Pehli class bilkul FREE.",
+    "One-to-one online Quran classes for kids in Urdu with an experienced female Pakistani Qaria. Learn Nazra, Tajweed, duas and Islamic manners.",
   keywords: [
     "online Quran classes for kids",
     "Pakistani Quran teacher",
@@ -32,6 +36,28 @@ export const metadata: Metadata = {
     description:
       "1-on-1 Quran, Tajweed, Duaein aur Islami Tarbiyat | Urdu mein. Pehli class FREE.",
     images: ["/her_png.png"],
+    url: "/",
+    type: "website",
+    siteName: "Online Qaria",
+    locale: "en_GB",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Online Quran Classes for Kids | Female Qaria",
+    description: "Private Urdu-medium Quran lessons for children with an experienced female Pakistani Qaria.",
+    images: ["/her_png.png"],
+  },
+  alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   icons: {
     icon: "/favicon.png",
@@ -40,12 +66,22 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const organization = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    name: "Online Qaria",
+    url: "https://onlineqaria.com",
+    logo: "https://onlineqaria.com/logo-mark.png",
+    description: "One-to-one online Quran classes for children taught in Urdu by an experienced female Pakistani Qaria.",
+  };
+
   return (
     <html
-      lang="ur-Latn"
+      lang="en"
       className={`${body.variable} ${heading.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
         {children}
         <MetaPixel />
       </body>

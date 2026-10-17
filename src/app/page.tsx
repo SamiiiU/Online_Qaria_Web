@@ -1,7 +1,6 @@
 import Image from "next/image";
 import BookButton from "./components/BookButton";
-import BookingModal from "./components/BookingModal";
-import StickyCta from "./components/StickyCta";
+import SiteShell from "./components/SiteShell";
 
 function Check({ className = "" }: { className?: string }) {
   return (
@@ -32,12 +31,6 @@ const badges = [
   { label: "1-on-1 Online Classes", icon: "M3 6h12v12H3zM16 10l5-3v10l-5-3z" },
 ];
 
-const navLinks = [
-  { href: "#", label: "Home" },
-  { href: "#courses", label: "Kya Sikhayenge" },
-  { href: "#fees", label: "Fees" },
-];
-
 const features = [
   { title: "Nazra Quran", text: "Sahi makharij ke saath rawani se Quran parhna." },
   { title: "Tajweed ke saath Quran", text: "Tajweed ke qawaid, asaan aur aamli andaaz mein." },
@@ -48,29 +41,7 @@ const features = [
 
 export default function Home() {
   return (
-    <>
-      <header className="sticky top-0 z-40 border-b border-slate-100 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2.5 sm:py-3">
-          <a href="#" className="flex items-center gap-2">
-            <Image src="/logo-mark.png" alt="" width={82} height={102} className="h-6 w-auto sm:h-7" />
-            <span className="font-serif text-lg leading-none font-semibold whitespace-nowrap text-navy sm:text-xl">Online Qaria</span>
-          </a>
-          <nav className="hidden items-center gap-8 text-sm font-medium text-ink md:flex">
-            {navLinks.map((l) => (
-              <a key={l.href} href={l.href} className="transition hover:text-gold">
-                {l.label}
-              </a>
-            ))}
-          </nav>
-          <BookButton
-            className="shrink-0 rounded-lg bg-navy px-3 py-2 text-sm sm:px-4 font-semibold text-white hover:bg-navy-soft"
-          >
-            Free Demo
-          </BookButton>
-        </div>
-      </header>
-
-      <main className="flex-1">
+    <SiteShell>
         {/* Hero */}
         <section className="bg-cream">
           <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-10 md:grid-cols-[3fr_2fr] md:gap-10 md:py-16">
@@ -108,6 +79,7 @@ export default function Home() {
                 height={500}
                 sizes="(min-width: 768px) 33vw, 240px"
                 className="w-60 sm:w-72 md:w-full md:max-w-md"
+                priority
               />
             </div>
           </div>
@@ -142,8 +114,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Trust + Pricing */}
-        <section id="fees" className="scroll-mt-16 bg-cream py-12 md:py-20">
+        {/* Trust + Demo */}
+        <section className="bg-cream py-12 md:py-20">
           <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 md:grid-cols-2 md:gap-10">
             <div>
               <h2 className="font-serif text-2xl font-bold text-navy sm:text-3xl md:text-4xl">Tajurbakar haathon mein taleem</h2>
@@ -153,18 +125,14 @@ export default function Home() {
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xl sm:p-8">
-              <p className="text-sm font-semibold tracking-wide text-gold uppercase">Monthly Package</p>
-              <h3 className="mt-2 text-xl font-semibold text-navy">30 min One-on-One Session, 5x/week</h3>
-              <p className="mt-1 text-muted">Nazra | Tajweed | Duaein | Islami Adaab</p>
-              <p className="mt-6">
-                <span className="font-serif text-4xl font-bold text-navy sm:text-5xl">AED 250</span>
-                <span className="text-muted"> /month</span>
-              </p>
+              <p className="text-sm font-semibold tracking-wide text-gold uppercase">Start with a free demo</p>
+              <h3 className="mt-2 text-xl font-semibold text-navy">Meet the Qaria before you decide</h3>
+              <p className="mt-2 text-muted">Experience the one-to-one teaching style and discuss the right learning plan for your child.</p>
               <ul className="mt-6 space-y-3">
                 <li className="flex gap-3">
                   <Check className="text-gold" />
                   <span>
-                    Multiple bachay? <strong>Exclusive family discount</strong> available | booking ke waqt batayein
+                    <strong>30-minute one-to-one session</strong> focused on your child’s current level
                   </span>
                 </li>
                 <li className="flex gap-3">
@@ -178,14 +146,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </main>
-
-      <footer className="bg-navy px-4 pt-8 pb-24 text-center text-sm text-white/80">
-        © {new Date().getFullYear()} Online Qaria · Khatoon Qaria se Urdu mein Quran
-      </footer>
-
-      <StickyCta />
-      <BookingModal />
-    </>
+    </SiteShell>
   );
 }

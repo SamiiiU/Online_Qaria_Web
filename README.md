@@ -20,6 +20,14 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Content management
+
+Sanity Studio provides the admin dashboard at `/studio`. Create a Sanity project, copy `.env.example` to `.env.local`, and set `NEXT_PUBLIC_SANITY_PROJECT_ID`. The production dataset defaults to `production`.
+
+Editors can publish structured SEO pages and country pricing without deploying the application again. Existing code-defined pages remain available as safe fallbacks. New published page paths are added to the XML sitemap automatically, while disabled and no-index pages are excluded.
+
+Add both the local and production website origins to the Sanity project's CORS settings with credentials enabled for Studio access.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

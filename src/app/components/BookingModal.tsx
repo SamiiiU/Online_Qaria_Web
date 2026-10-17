@@ -10,10 +10,14 @@ const inputClass =
   "w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-ink placeholder:text-slate-400 focus:border-gold focus:ring-2 focus:ring-gold/30 focus:outline-none";
 
 type Status = "idle" | "sending" | "done" | "error";
+type PhoneCountry = { code: string; name: string; dialCode: string };
 
 export default function BookingModal() {
   const dialog = useRef<HTMLDialogElement>(null);
   const [status, setStatus] = useState<Status>("idle");
+  const [countries, setCountries] = useState<PhoneCountry[]>([]);
+  const [countryCode, setCountryCode] = useState("AE");
+  const [countriesError, setCountriesError] = useState(false);
 
   useEffect(() => {
     const open = () => {
@@ -24,19 +28,43 @@ export default function BookingModal() {
     return () => window.removeEventListener(OPEN_BOOKING_EVENT, open);
   }, []);
 
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("/api/countries", { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error();
+        return response.json() as Promise<{ countries: PhoneCountry[]; selectedCountry: string }>;
+      })
+      .then((result) => {
+        setCountries(result.countries);
+        setCountryCode(result.selectedCountry);
+      })
+      .catch((error: unknown) => {
+        if (!(error instanceof DOMException && error.name === "AbortError")) setCountriesError(true);
+      });
+    return () => controller.abort();
+  }, []);
+
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     setStatus("sending");
     try {
       const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+      const selectedCountry = countries.find((country) => country.code === countryCode);
+      if (!selectedCountry) throw new Error("Country is required");
+      const nationalDigits = data.phone.replace(/\D/g, "");
+      const dialDigits = selectedCountry.dialCode.replace(/\D/g, "");
       await emailjs.send(
         EMAILJS.serviceId,
         EMAILJS.templateId,
         {
           name: data.name,
-          phone: data.phone,
-          whatsapp_digits: data.phone.replace(/\D/g, ""),
+          phone: `${selectedCountry.dialCode} ${data.phone}`,
+          whatsapp_digits: `${dialDigits}${nationalDigits}`,
+          country: selectedCountry.name,
+          country_code: selectedCountry.code,
+          calling_code: selectedCountry.dialCode,
           kids: data.kids,
           time: data.time,
           submitted_at: new Date().toLocaleString("en-GB", {
@@ -98,7 +126,37 @@ export default function BookingModal() {
               </div>
               <div>
                 <label htmlFor="phone" className="mb-1.5 block text-sm font-medium">WhatsApp Number</label>
-                <input id="phone" name="phone" type="tel" inputMode="tel" required defaultValue="+971 " className={inputClass} />
+                <div className="grid grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] gap-2">
+                  <select
+                    id="country-code"
+                    name="country"
+                    required
+                    aria-label="Country calling code"
+                    value={countryCode}
+                    onChange={(event) => setCountryCode(event.target.value)}
+                    disabled={!countries.length}
+                    className={`${inputClass} min-w-0 px-2 text-sm disabled:bg-slate-100`}
+                  >
+                    {!countries.length && <option value="AE">Loading countries...</option>}
+                    {countries.map((country) => (
+                      <option key={country.code} value={country.code}>
+                        {country.name} ({country.dialCode})
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    inputMode="tel"
+                    autoComplete="tel-national"
+                    required
+                    placeholder="50 123 4567"
+                    className={inputClass}
+                  />
+                </div>
+                {!countriesError && <p className="mt-1.5 text-xs text-muted">Country code dropdown se select karein; number mein country code dobara na likhein.</p>}
+                {countriesError && <p className="mt-1.5 text-sm text-red-600">Country codes could not load. Please close and try again.</p>}
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
@@ -115,9 +173,9 @@ export default function BookingModal() {
                   <label htmlFor="time" className="mb-1.5 block text-sm font-medium">Pasandeeda Waqt / Preferred Time</label>
                   <select id="time" name="time" required className={inputClass} defaultValue="">
                     <option value="" disabled>Waqt chunein</option>
-                    <option>Subah (9am – 12pm)</option>
-                    <option>Dopehar (12pm – 4pm)</option>
-                    <option>Shaam (4pm – 8pm)</option>
+                    <option>Subah (9am - 12pm)</option>
+                    <option>Dopehar (12pm - 4pm)</option>
+                    <option>Shaam (4pm - 8pm)</option>
                     <option>Raat (8pm ke baad)</option>
                   </select>
                 </div>
