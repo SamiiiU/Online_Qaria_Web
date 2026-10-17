@@ -10,6 +10,25 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminPage() {
+  const isSupabaseConfigured = Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+      process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
+  );
+
+  if (!isSupabaseConfigured) {
+    return (
+      <main className="min-h-screen bg-cream px-5 py-16">
+        <section className="mx-auto max-w-xl rounded-lg border border-gold/30 bg-white p-7 shadow-sm sm:p-10">
+          <p className="text-sm font-bold uppercase text-gold">Online Qaria</p>
+          <h1 className="mt-3 font-serif text-3xl font-semibold text-navy">Admin setup required</h1>
+          <p className="mt-4 leading-7 text-muted">
+            Add the Supabase URL and publishable key to this deployment, then redeploy the website.
+          </p>
+        </section>
+      </main>
+    );
+  }
+
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   const allowedEmail = process.env.ADMIN_EMAIL || "onlineqaaria@gmail.com";
