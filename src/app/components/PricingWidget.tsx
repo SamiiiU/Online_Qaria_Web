@@ -13,6 +13,33 @@ type PricingData = {
   countries: Country[];
 };
 
+const fallbackCountries: Country[] = [
+  { code: "AE", name: "United Arab Emirates", currency: "AED" },
+  { code: "GB", name: "United Kingdom", currency: "GBP" },
+  { code: "US", name: "United States", currency: "USD" },
+  { code: "CA", name: "Canada", currency: "CAD" },
+  { code: "AU", name: "Australia", currency: "AUD" },
+  { code: "PK", name: "Pakistan", currency: "PKR" },
+];
+
+const fallbackPrices: Record<string, { amount: number; currency: string }> = {
+  AE: { amount: 250, currency: "AED" },
+};
+
+const fallbackPackage = { lessonMinutes: 30, classesPerWeek: 5, trialIsFree: true };
+
+function localPricingData(countryCode: string, confirmed: boolean): PricingData {
+  const country = fallbackCountries.find((item) => item.code === countryCode) ?? null;
+  return {
+    confirmed,
+    source: confirmed ? "saved" : "none",
+    country,
+    price: country ? fallbackPrices[country.code] ?? null : null,
+    package: fallbackPackage,
+    countries: fallbackCountries,
+  };
+}
+
 export default function PricingWidget() {
   const [data, setData] = useState<PricingData | null>(null);
   const [selected, setSelected] = useState("");
@@ -31,7 +58,12 @@ export default function PricingWidget() {
         setSelected(result.country?.code ?? "");
         setChoosing(!result.country || !result.confirmed);
       })
-      .catch(() => setError("We could not detect your country. Please choose it below."))
+      .catch(() => {
+        const savedCountry = window.localStorage.getItem("oq_country") ?? "";
+        setData(localPricingData(savedCountry, Boolean(savedCountry)));
+        setSelected(savedCountry);
+        setChoosing(!savedCountry);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -49,13 +81,18 @@ export default function PricingWidget() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ country: countryCode }),
       });
-      if (!response.ok) throw new Error();
+      if (!response.ok) throw new Error("Pricing API is unavailable.");
       const result = (await response.json()) as PricingData;
       setData(result);
       setSelected(result.country?.code ?? countryCode);
       setChoosing(false);
+      window.localStorage.setItem("oq_country", result.country?.code ?? countryCode);
     } catch {
-      setError("We could not save your country. Please try again.");
+      const result = localPricingData(countryCode, true);
+      window.localStorage.setItem("oq_country", countryCode);
+      setData(result);
+      setSelected(countryCode);
+      setChoosing(false);
     } finally {
       setLoading(false);
     }
@@ -65,14 +102,7 @@ export default function PricingWidget() {
     return <div className="h-72 animate-pulse rounded-xl border border-slate-200 bg-white" aria-label="Loading local pricing" />;
   }
 
-  const countries = data?.countries ?? [
-    { code: "AE", name: "United Arab Emirates", currency: "AED" },
-    { code: "GB", name: "United Kingdom", currency: "GBP" },
-    { code: "US", name: "United States", currency: "USD" },
-    { code: "CA", name: "Canada", currency: "CAD" },
-    { code: "AU", name: "Australia", currency: "AUD" },
-    { code: "PK", name: "Pakistan", currency: "PKR" },
-  ];
+  const countries = data?.countries ?? fallbackCountries;
 
   if (choosing || !data?.confirmed) {
     return (
