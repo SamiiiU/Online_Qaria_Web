@@ -24,6 +24,8 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 Sanity Studio provides the admin dashboard at `/studio`. Create a Sanity project, copy `.env.example` to `.env.local`, and set `NEXT_PUBLIC_SANITY_PROJECT_ID`. The production dataset defaults to `production`.
 
+Supabase provides password-free admin authentication at `/admin`. Set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, and `ADMIN_EMAIL` in `.env.local`. In Supabase Authentication URL Configuration, add the production `/auth/callback` URL and the local callback URL to the redirect allow list.
+
 Editors can publish structured SEO pages and country pricing without deploying the application again. Existing code-defined pages remain available as safe fallbacks. New published page paths are added to the XML sitemap automatically, while disabled and no-index pages are excluded.
 
 Add both the local and production website origins to the Sanity project's CORS settings with credentials enabled for Studio access.
