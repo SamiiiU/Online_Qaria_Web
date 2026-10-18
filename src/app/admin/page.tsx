@@ -57,7 +57,7 @@ export default async function AdminPage() {
           </div>
         ) : (
           <>
-            <p className="mt-4 leading-7 text-muted">Use the approved Online Qaria email to receive a secure, password-free login link.</p>
+            <p className="mt-4 leading-7 text-muted">Sign in with the approved Online Qaria admin account.</p>
             <LoginForm />
           </>
         )}
