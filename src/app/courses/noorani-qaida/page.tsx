@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function QaidaPage() {
-  const course = { "@context": "https://schema.org", "@type": "Course", name: "Online Noorani Qaida Classes", description: "One-to-one Noorani Qaida lessons in Urdu for children and beginners.", provider: { "@type": "EducationalOrganization", name: "Online Qaria", sameAs: "https://onlineqaria.com" } };
+  const course = { "@context": "https://schema.org", "@type": "Course", name: "Online Noorani Qaida Classes", description: "One-to-one Noorani Qaida lessons in Urdu for children and beginners.", provider: { "@type": "EducationalOrganization", name: "Online Qaria", url: "https://onlineqaria.com" } };
   return (
     <SiteShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(course) }} />

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function NazraPage() {
-  const course = { "@context": "https://schema.org", "@type": "Course", name: "Online Nazra Quran with Tajweed", description: "Guided Nazra Quran reading with pronunciation and Tajweed correction in Urdu.", provider: { "@type": "EducationalOrganization", name: "Online Qaria", sameAs: "https://onlineqaria.com" } };
+  const course = { "@context": "https://schema.org", "@type": "Course", name: "Online Nazra Quran with Tajweed", description: "Guided Nazra Quran reading with pronunciation and Tajweed correction in Urdu.", provider: { "@type": "EducationalOrganization", name: "Online Qaria", url: "https://onlineqaria.com" } };
   return (
     <SiteShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(course) }} />
