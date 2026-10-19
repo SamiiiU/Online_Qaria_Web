@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import BookButton from "./components/BookButton";
 import SiteShell from "./components/SiteShell";
 
@@ -81,6 +82,33 @@ export default function Home() {
                 className="w-60 sm:w-72 md:w-full md:max-w-md"
                 priority
               />
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="trust-heading" className="border-y border-slate-200 bg-white">
+          <div className="mx-auto max-w-6xl px-4 py-10 sm:py-12">
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold uppercase text-gold">Before you enrol</p>
+              <h2 id="trust-heading" className="mt-2 font-serif text-2xl font-bold text-navy sm:text-3xl">Check the teacher, safeguards and terms</h2>
+              <p className="mt-3 leading-7 text-muted">Parents should be able to understand who teaches, how children are protected and what the service includes before making a decision.</p>
+            </div>
+            <div className="mt-8 grid gap-8 border-t border-slate-200 pt-8 sm:grid-cols-3">
+              <div>
+                <h3 className="font-semibold text-navy">Female Qaria</h3>
+                <p className="mt-2 text-sm leading-6 text-muted">Read about the teaching approach, Urdu support and one-to-one lesson format.</p>
+                <Link href="/female-quran-teacher-online" className="mt-3 inline-block font-semibold text-gold hover:text-navy">Meet the teacher <span aria-hidden>→</span></Link>
+              </div>
+              <div>
+                <h3 className="font-semibold text-navy">Parent-first safety</h3>
+                <p className="mt-2 text-sm leading-6 text-muted">Review communication boundaries, parent observation and lesson recording safeguards.</p>
+                <Link href="/child-safety" className="mt-3 inline-block font-semibold text-gold hover:text-navy">Read the safeguards <span aria-hidden>→</span></Link>
+              </div>
+              <div>
+                <h3 className="font-semibold text-navy">Clear terms</h3>
+                <p className="mt-2 text-sm leading-6 text-muted">See country-based pricing and understand cancellation terms before starting lessons.</p>
+                <Link href="/pricing" className="mt-3 inline-block font-semibold text-gold hover:text-navy">Review pricing <span aria-hidden>→</span></Link>
+              </div>
             </div>
           </div>
         </section>
