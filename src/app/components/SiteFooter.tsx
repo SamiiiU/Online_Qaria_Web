@@ -9,6 +9,7 @@ const serviceLinks = [
 ];
 
 const trustLinks = [
+  ["Parent and Student Reviews", "/reviews"],
   ["About", "/about"],
   ["Child Safety", "/child-safety"],
   ["Parent Guides", "/blog"],

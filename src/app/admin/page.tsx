@@ -48,6 +48,7 @@ export default async function AdminPage() {
         {user ? (
           <div className="mt-7 space-y-5">
             <p className="text-muted">Signed in as {user.email}</p>
+            <Link href="/admin/reviews" className="block font-semibold text-navy underline">Review student feedback</Link>
             <Link href="/studio" className="inline-flex rounded-md bg-navy px-5 py-3 font-semibold text-white hover:bg-navy-soft">
               Open content studio
             </Link>

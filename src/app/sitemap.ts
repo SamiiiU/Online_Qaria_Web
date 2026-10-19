@@ -14,5 +14,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .map((page): MetadataRoute.Sitemap[number] => ({ url: `https://onlineqaria.com/${page.path}`, lastModified: new Date(page._updatedAt), changeFrequency: "monthly", priority: 0.7 }))
     .filter((entry) => !staticUrls.has(entry.url));
   const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({ url: `https://onlineqaria.com/blog/${post.slug}`, lastModified: new Date(post.updatedAt || post._updatedAt || post.publishedAt), changeFrequency: "monthly", priority: 0.6 }));
-  return [...staticEntries, ...managedEntries, ...postEntries];
+  return [...staticEntries, ...managedEntries, ...postEntries, { url: "https://onlineqaria.com/reviews", changeFrequency: "weekly", priority: 0.7 }];
 }

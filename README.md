@@ -20,7 +20,15 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Content management
+## Student reviews
+
+The review pages are `/reviews` and `/reviews/newReview`. Approved administrators moderate submissions at `/admin/reviews`. Phone numbers stay in private storage; only approved feedback is publicly readable.
+
+Before enabling submissions, follow [Reviews setup](docs/reviews-setup.md) to apply the Supabase migration and configure the server secret and email sender. Application code alone does not provision the production database or email account.
+
+Run `npm run test:reviews` for validation and isolated database privacy tests. With the local website running on port 3001, run `npm run test:reviews:browser` for mobile and desktop form checks. Browser submission responses are mocked; these checks do not insert production reviews or send emails.
+
+## Sanity and authentication
 
 Sanity Studio provides the admin dashboard at `/studio`. Create a Sanity project, copy `.env.example` to `.env.local`, and set `NEXT_PUBLIC_SANITY_PROJECT_ID`. The production dataset defaults to `production`.
 
