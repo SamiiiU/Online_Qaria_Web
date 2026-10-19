@@ -1,0 +1,209 @@
+{
+  "_id": "drafts.safe-online-quran-teacher-guide",
+  "_type": "post",
+  "title": "How to Choose a Safe Online Quran Teacher for Your Child",
+  "slug": { "_type": "slug", "current": "how-to-choose-safe-online-quran-teacher-for-child" },
+  "summary": "A practical checklist to help parents assess teaching quality, communication boundaries, lesson visibility and their child's comfort before choosing an online Quran teacher.",
+  "publishedAt": "2026-10-20T04:00:00.000Z",
+  "seo": {
+    "title": "How to Choose a Safe Online Quran Teacher for Your Child",
+    "description": "Use this practical parent checklist to assess an online Quran teacher's communication, lesson setup, teaching approach and child-safety boundaries.",
+    "noIndex": false
+  },
+  "body": [
+    {
+      "_key": "intro",
+      "_type": "block",
+      "style": "normal",
+      "markDefs": [],
+      "children": [{ "_key": "intro-text", "_type": "span", "marks": [], "text": "Choosing an online Quran teacher is not only a question of subject knowledge. Parents also need to know who will teach their child, how lessons will be supervised, where communication will happen and whether the child feels respected. A polished website or a low fee cannot answer those questions on its own. A careful trial and a few direct questions can." }]
+    },
+    {
+      "_key": "before-demo",
+      "_type": "block",
+      "style": "h2",
+      "markDefs": [],
+      "children": [{ "_key": "before-demo-text", "_type": "span", "marks": [], "text": "Questions to ask before the demo lesson" }]
+    },
+    {
+      "_key": "identity",
+      "_type": "block",
+      "style": "h3",
+      "markDefs": [],
+      "children": [{ "_key": "identity-text", "_type": "span", "marks": [], "text": "Who will teach the regular classes?" }]
+    },
+    {
+      "_key": "identity-body",
+      "_type": "block",
+      "style": "normal",
+      "markDefs": [],
+      "children": [{ "_key": "identity-body-text", "_type": "span", "marks": [], "text": "Ask whether the person in the demo will also teach the regular lessons. A consistent teacher can learn the child's current level, recurring pronunciation mistakes and confidence. If an academy uses several tutors, ask how changes are communicated and how learning notes are transferred." }]
+    },
+    {
+      "_key": "communication",
+      "_type": "block",
+      "style": "h3",
+      "markDefs": [],
+      "children": [{ "_key": "communication-text", "_type": "span", "marks": [], "text": "How is communication kept under parent control?" }]
+    },
+    {
+      "_key": "communication-body",
+      "_type": "block",
+      "style": "normal",
+      "markDefs": [],
+      "children": [{ "_key": "communication-body-text", "_type": "span", "marks": [], "text": "Scheduling, meeting links, progress messages and payment discussions should use a parent or guardian's contact details. Ask whether the teacher ever contacts a child privately. A clear service should be able to explain its boundaries without hesitation." }]
+    },
+    {
+      "_key": "observation",
+      "_type": "block",
+      "style": "h3",
+      "markDefs": [],
+      "children": [{ "_key": "observation-text", "_type": "span", "marks": [], "text": "Can a parent observe lessons?" }]
+    },
+    {
+      "_key": "observation-body",
+      "_type": "block",
+      "style": "normal",
+      "markDefs": [],
+      "children": [{ "_key": "observation-body-text", "_type": "span", "marks": [], "text": "Parents should understand how the lesson works before leaving a child to study independently. For a younger child, keep the device in a shared area and remain nearby. For an older child, agree on regular check-ins. Observation should protect the child without making every small mistake feel like a performance." }]
+    },
+    {
+      "_key": "demo-watch",
+      "_type": "block",
+      "style": "h2",
+      "markDefs": [],
+      "children": [{ "_key": "demo-watch-text", "_type": "span", "marks": [], "text": "What to watch during a trial lesson" }]
+    },
+    {
+      "_key": "assessment",
+      "_type": "block",
+      "style": "h3",
+      "markDefs": [],
+      "children": [{ "_key": "assessment-text", "_type": "span", "marks": [], "text": "The teacher checks the starting level" }]
+    },
+    {
+      "_key": "assessment-body",
+      "_type": "block",
+      "style": "normal",
+      "markDefs": [],
+      "children": [{ "_key": "assessment-body-text", "_type": "span", "marks": [], "text": "A useful trial should reveal what the child can already do. The teacher may check letter recognition, joining, reading flow, makharij or basic Tajweed depending on the learner. Be cautious if every student is given the same starting point without any assessment." }]
+    },
+    {
+      "_key": "correction",
+      "_type": "block",
+      "style": "h3",
+      "markDefs": [],
+      "children": [{ "_key": "correction-text", "_type": "span", "marks": [], "text": "Corrections are clear and respectful" }]
+    },
+    {
+      "_key": "correction-body",
+      "_type": "block",
+      "style": "normal",
+      "markDefs": [],
+      "children": [{ "_key": "correction-body-text", "_type": "span", "marks": [], "text": "Notice what happens after a mistake. A patient teacher demonstrates the sound, gives the child time to repeat it and explains at a level the child can understand. Shaming, threats, ridicule or irritation are not acceptable teaching methods." }]
+    },
+    {
+      "_key": "participation",
+      "_type": "block",
+      "style": "h3",
+      "markDefs": [],
+      "children": [{ "_key": "participation-text", "_type": "span", "marks": [], "text": "The child is actively participating" }]
+    },
+    {
+      "_key": "participation-body",
+      "_type": "block",
+      "style": "normal",
+      "markDefs": [],
+      "children": [{ "_key": "participation-body-text", "_type": "span", "marks": [], "text": "A one-to-one lesson should not become a long lecture. The child needs opportunities to read, repeat, ask questions and practise difficult sounds. Good teaching is visible in the interaction, not only in the teacher's own recitation." }]
+    },
+    {
+      "_key": "after-demo",
+      "_type": "block",
+      "style": "h2",
+      "markDefs": [],
+      "children": [{ "_key": "after-demo-text", "_type": "span", "marks": [], "text": "Check your child's response after the lesson" }]
+    },
+    {
+      "_key": "after-demo-body",
+      "_type": "block",
+      "style": "normal",
+      "markDefs": [],
+      "children": [{ "_key": "after-demo-body-text", "_type": "span", "marks": [], "text": "Ask open questions: What did you enjoy? What felt difficult? Did you understand the correction? Would you feel comfortable asking this teacher for help? A child may be naturally shy in a first meeting, so look for comfort and respect rather than instant enthusiasm. Take unexplained fear or discomfort seriously." }]
+    },
+    {
+      "_key": "practical",
+      "_type": "block",
+      "style": "h2",
+      "markDefs": [],
+      "children": [{ "_key": "practical-text", "_type": "span", "marks": [], "text": "Confirm the practical details in writing" }]
+    },
+    {
+      "_key": "practical-list",
+      "_type": "block",
+      "style": "normal",
+      "listItem": "bullet",
+      "level": 1,
+      "markDefs": [],
+      "children": [{ "_key": "practical-one", "_type": "span", "marks": [], "text": "Lesson length, frequency and available times" }]
+    },
+    {
+      "_key": "practical-list-two",
+      "_type": "block",
+      "style": "normal",
+      "listItem": "bullet",
+      "level": 1,
+      "markDefs": [],
+      "children": [{ "_key": "practical-two", "_type": "span", "marks": [], "text": "The learning material and expected starting level" }]
+    },
+    {
+      "_key": "practical-list-three",
+      "_type": "block",
+      "style": "normal",
+      "listItem": "bullet",
+      "level": 1,
+      "markDefs": [],
+      "children": [{ "_key": "practical-three", "_type": "span", "marks": [], "text": "Fees, payment timing and cancellation rules" }]
+    },
+    {
+      "_key": "practical-list-four",
+      "_type": "block",
+      "style": "normal",
+      "listItem": "bullet",
+      "level": 1,
+      "markDefs": [],
+      "children": [{ "_key": "practical-four", "_type": "span", "marks": [], "text": "How progress and concerns are discussed with parents" }]
+    },
+    {
+      "_key": "red-flags",
+      "_type": "block",
+      "style": "h2",
+      "markDefs": [],
+      "children": [{ "_key": "red-flags-text", "_type": "span", "marks": [], "text": "Warning signs parents should not ignore" }]
+    },
+    {
+      "_key": "red-flags-body",
+      "_type": "block",
+      "style": "normal",
+      "markDefs": [],
+      "children": [{ "_key": "red-flags-body-text", "_type": "span", "marks": [], "text": "Pause before enrolling if the service avoids naming the regular teacher, discourages parent observation, asks to communicate privately with the child, pressures you to pay immediately, makes guaranteed learning promises, or cannot explain its complaint and cancellation process. One concern may need clarification. Several concerns together are a reason to look elsewhere." }]
+    },
+    {
+      "_key": "decision",
+      "_type": "block",
+      "style": "h2",
+      "markDefs": [],
+      "children": [{ "_key": "decision-text", "_type": "span", "marks": [], "text": "Choose fit, not just convenience" }]
+    },
+    {
+      "_key": "decision-body",
+      "_type": "block",
+      "style": "normal",
+      "markDefs": [{ "_key": "safety-link", "_type": "link", "href": "/child-safety" }],
+      "children": [
+        { "_key": "decision-a", "_type": "span", "marks": [], "text": "The right teacher should suit the child's current level, language, temperament and family routine. Compare the lesson itself with the promises made before it. Before booking with Online Qaria, parents can also read our " },
+        { "_key": "decision-b", "_type": "span", "marks": ["safety-link"], "text": "child-safety approach" },
+        { "_key": "decision-c", "_type": "span", "marks": [], "text": " and discuss any questions during the demo." }
+      ]
+    }
+  ]
+}

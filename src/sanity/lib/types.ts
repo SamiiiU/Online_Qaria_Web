@@ -40,3 +40,15 @@ export type CmsMarketPrice = {
   currency: string;
   amount: number;
 };
+
+export type CmsPost = {
+  _id: string;
+  _updatedAt: string;
+  title: string;
+  slug: string;
+  summary: string;
+  publishedAt: string;
+  updatedAt?: string;
+  body?: PortableTextBlock[];
+  seo?: CmsSeo;
+};

@@ -8,6 +8,7 @@ const links = [
   { href: "/online-quran-classes", label: "Classes" },
   { href: "/female-quran-teacher-online", label: "Female Qaria" },
   { href: "/child-safety", label: "Safety" },
+  { href: "/blog", label: "Guides" },
   { href: "/pricing", label: "Pricing" },
   { href: "/contact", label: "Contact" },
 ];

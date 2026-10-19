@@ -11,6 +11,7 @@ const serviceLinks = [
 const trustLinks = [
   ["About", "/about"],
   ["Child Safety", "/child-safety"],
+  ["Parent Guides", "/blog"],
   ["Pricing", "/pricing"],
   ["Contact", "/contact"],
 ];

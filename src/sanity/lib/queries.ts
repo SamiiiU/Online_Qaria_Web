@@ -23,6 +23,29 @@ export const publishedPagePathsQuery = `*[_type == "page" && enabled != false]{
   seo
 }`;
 
+export const publishedPostsQuery = `*[_type == "post" && defined(slug.current) && publishedAt <= now() && seo.noIndex != true] | order(publishedAt desc){
+  _id,
+  _updatedAt,
+  title,
+  "slug": slug.current,
+  summary,
+  publishedAt,
+  updatedAt,
+  seo
+}`;
+
+export const postBySlugQuery = `*[_type == "post" && slug.current == $slug && publishedAt <= now()][0]{
+  _id,
+  _updatedAt,
+  title,
+  "slug": slug.current,
+  summary,
+  publishedAt,
+  updatedAt,
+  body,
+  seo
+}`;
+
 export const marketPricesQuery = `*[_type == "marketPrice" && enabled == true]{
   countryCode,
   countryName,
