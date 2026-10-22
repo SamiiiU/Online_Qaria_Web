@@ -20,7 +20,14 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Student reviews
+## Scheduled SEO operations
+
+The cloud SEO worker uses GitHub Actions, Grok/xAI, Sanity drafts and ClickUp.
+It is disabled until repository secrets and `SEO_AUTOMATION_ENABLED` are configured.
+Follow the [setup, technical report, risks and limitations](docs/seo/cloud-automation.md).
+Run `npm run test:seo` for offline tests. Public publishing remains a manual Sanity approval.
+
+## Student reviews setup
 
 The review pages are `/reviews` and `/reviews/newReview`. Approved administrators moderate submissions at `/admin/reviews`. Phone numbers stay in private storage; only approved feedback is publicly readable.
 

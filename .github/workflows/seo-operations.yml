@@ -1,0 +1,43 @@
+name: SEO operations
+on:
+  schedule:
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Preflight checks credentials without spending AI credits'
+        type: choice
+        options: [preflight, daily]
+        default: preflight
+permissions:
+  contents: read
+concurrency:
+  group: seo-operations
+  cancel-in-progress: false
+jobs:
+  operate:
+    if: github.event_name == 'workflow_dispatch' || vars.SEO_AUTOMATION_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/seo-automation.test.mjs tests/seo-runner.test.mjs
+      - name: Run SEO operator
+        run: node scripts/seo/run.mjs
+        env:
+          SEO_MODE: ${{ inputs.mode || 'daily' }}
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          XAI_MODEL: ${{ vars.XAI_MODEL }}
+          SANITY_API_TOKEN: ${{ secrets.SANITY_API_TOKEN }}
+          CLICKUP_API_TOKEN: ${{ secrets.CLICKUP_API_TOKEN }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: seo-report-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .seo-output/
+          retention-days: 30

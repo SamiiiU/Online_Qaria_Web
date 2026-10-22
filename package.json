@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "test:seo": "node --test tests/seo-automation.test.mjs tests/seo-runner.test.mjs",
+    "seo:run": "node scripts/seo/run.mjs",
     "test:reviews": "node --experimental-strip-types --test tests/reviews.test.mjs tests/reviews-database.test.mjs",
     "test:reviews:browser": "node tests/reviews-browser.mjs",
     "dev": "next dev",
