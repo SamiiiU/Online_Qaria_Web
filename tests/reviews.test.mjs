@@ -17,6 +17,11 @@ test('accepts critical feedback and strips attempts to approve or set private se
   assert.equal('status' in result, false);
   assert.equal('notification_sent_at' in result, false);
 });
+test('accepts omitted phone and removed experience question', () => {
+  const result = validateReview({ ...valid, phone: undefined, experience: undefined });
+  assert.equal(result.phone, '');
+  assert.equal(result.experience, '');
+});
 test('requires explicit adult and publication consent', () => {
   for (const key of ['consent', 'adult']) for (const value of [false, undefined, 'true']) {
     assert.throws(() => validateReview({ ...valid, [key]: value }));

@@ -34,12 +34,13 @@ export function validateReview(raw: Record<string, unknown>): ReviewInput {
   };
   const data = {
     display_name: text("display_name", 2, 60), role: text("role", 1, 30),
-    city: text("city", 2, 80), country: text("country", 2, 80), phone: text("phone", 8, 16),
+    city: text("city", 2, 80), country: text("country", 2, 80), phone: text("phone", 0, 16),
     course: text("course", 1, 60), duration: text("duration", 1, 40),
-    learned: text("learned", 20, 1200), experience: text("experience", 30, 2000),
+    learned: text("learned", 20, 1200), experience: text("experience", 0, 2000),
     improvements: text("improvements", 0, 1000),
   };
-  if (!/^\+[1-9]\d{7,14}$/.test(data.phone)) throw new Error("Enter a valid phone number with country code.");
+  if (data.phone && !/^\+[1-9]\d{7,14}$/.test(data.phone)) throw new Error("Enter a valid phone number with country code, or leave it blank.");
+  if (data.experience && data.experience.length < 30) throw new Error("Please use at least 30 characters for experience.");
   if (!["Parent / guardian", "Adult student"].includes(data.role) || !courses.includes(data.course) || !durations.includes(data.duration) || !reviewCountries.some(([name]) => name === data.country)) throw new Error("Please choose valid options.");
   const ratings = {} as Record<RatingKey, number>;
   for (const key of Object.keys(ratingLabels) as RatingKey[]) {

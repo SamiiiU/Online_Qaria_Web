@@ -12,13 +12,14 @@ try {
     await page.getByRole('heading', { name: 'Leave your experience with us' }).waitFor();
     await page.locator('input[name="display_name"]').fill('Test parent');
     await page.locator('input[name="city"]').fill('Karachi');
-    await page.getByRole('textbox', { name: 'Phone number without country code' }).fill('3001234567');
+    if (viewport.width === 1440) await page.getByRole('textbox', { name: 'Phone number without country code' }).fill('3001234567');
+    assert.equal(await page.locator('textarea').count(), 2);
+    assert.equal(await page.getByRole('textbox', { name: 'Phone number without country code' }).getAttribute('required'), null);
     await page.locator('select[name="duration"]').selectOption('1-3 months');
     for (const name of ['punctuality', 'clarity', 'patience', 'communication']) {
       await page.locator(`input[name="${name}"][value="4"]`).check({ force: true });
     }
     await page.locator('textarea[name="learned"]').fill('Joined Arabic letters became easier to understand.');
-    await page.locator('textarea[name="experience"]').fill('The teacher explained corrections clearly in this isolated form test.');
     await page.locator('input[name="adult"]').check();
     await page.locator('input[name="consent"]').check();
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
@@ -26,7 +27,8 @@ try {
     let attempts = 0; let requestKey;
     await page.route('**/api/reviews', async route => {
       const payload = route.request().postDataJSON();
-      assert.equal(payload.phone, '+923001234567');
+      assert.equal(payload.phone, viewport.width === 1440 ? '+923001234567' : '');
+      assert.equal(payload.experience, undefined);
       assert.equal(payload.punctuality, 4);
       assert.equal(payload.consent, true);
       if (requestKey) assert.equal(payload.request_key, requestKey);

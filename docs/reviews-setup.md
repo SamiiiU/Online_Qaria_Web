@@ -12,9 +12,10 @@ The review template is now `template_zfcvbpc`, configured in code with the exist
 
 ## Workflow
 
-- `/reviews/newReview`: adult-only consent, public display name, location, course, duration, four required ratings, learning outcomes, experience, optional improvements and private phone.
-- Submission stores a pending review before attempting notification. Repeated submissions with the same request key return the original review. A phone can submit once per 24 hours.
-- `/admin/reviews`: existing Supabase admin login; verified email must match `ADMIN_EMAIL`. Match the phone to student records and check public text before approving. Reject or return to pending to remove an approved review immediately.
+- `/reviews/newReview`: adult-only consent, public display name, location, course, duration, four required ratings, learning outcomes and optional improvements. Private phone is optional. Historical experience answers remain available, but new forms have only two text questions.
+- Apply `202610290001_optional_review_fields.sql` after the initial migration before deploying the shorter form. Existing rows are preserved.
+- Submission stores a pending review before attempting notification. Repeated submissions with the same request key return the original review. A phone can submit once per 24 hours. Without a phone, the same display-name/city/country combination is limited to one submission per 24 hours. This is basic duplicate protection, not strong identity or bot verification.
+- `/admin/reviews`: existing Supabase admin login; verified email must match `ADMIN_EMAIL`. Verify against student records, using the phone when supplied, and check public text before approving. Without sufficient evidence, leave pending. Reject or return to pending to remove an approved review immediately.
 - `/reviews`: approved reviews only, paginated, explicit public field selection, no private phone. No fabricated reviews are seeded.
 - Failed email attempts do not lose submissions. The moderation dashboard displays unsent notifications and has a retry action. There is no automatic retry scheduler; check pending reviews if delivery fails.
 - EmailJS limits sending to one request per second. Failed or rate-limited requests remain unsent in the dashboard for retry. A timeout after provider acceptance can result in a duplicate notification on retry; match the review reference. No phone or written feedback is sent in the notification payload.
