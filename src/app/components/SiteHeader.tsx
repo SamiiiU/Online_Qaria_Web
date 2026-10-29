@@ -8,6 +8,7 @@ const links = [
   { href: "/online-quran-classes", label: "Classes" },
   { href: "/female-quran-teacher-online", label: "Female Qaria" },
   { href: "/child-safety", label: "Safety" },
+  { href: "/reviews", label: "Reviews" },
   { href: "/blog", label: "Guides" },
   { href: "/pricing", label: "Pricing" },
   { href: "/contact", label: "Contact" },
@@ -23,7 +24,7 @@ export default function SiteHeader() {
             Online Qaria
           </span>
         </Link>
-        <nav aria-label="Main navigation" className="hidden items-center gap-5 text-sm font-medium text-ink lg:flex">
+        <nav aria-label="Main navigation" className="hidden items-center gap-3 text-sm font-medium whitespace-nowrap text-ink lg:flex xl:gap-5">
           {links.map((link) => (
             <Link key={link.href} href={link.href} className="transition hover:text-gold">
               {link.label}
